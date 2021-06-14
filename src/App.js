@@ -7,14 +7,23 @@ function App() {
     {name: 'Photoshop', price: '$99.99'},
     {name: 'Illustrator', price: '$69.99'},
     {name: 'PDF Reader', price: '$29.99'},
+    {name: 'Adove XD', price: '$59.99'},
   ]
 
   return (
     <div className="App">
       <header className="App-header">
+        {/* dynamically passing obejct */}
+        {
+          products.map(pd => <Products product={pd}></Products>)
+        }
+
+
         <Products product={products[0]} ></Products>
         <Products product={products[1]} ></Products>
         <Products product={products[2]} ></Products>
+        
+        
         <Person name='Mohosin Palash' job='Student'></Person>
         <Person name='Shoptorshe Prova' job='Doctor'></Person>
       </header>
