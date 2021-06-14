@@ -1,5 +1,6 @@
 import logo from './logo.svg';
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         {/* event listener */}
         <Count></Count>
 
+        <Users></Users>
+
         {/* dynamically passing obejct */}
         {
           products.map(pd => <Products product={pd}></Products>)
@@ -35,6 +38,26 @@ function App() {
     </div>
   );
 }
+
+function Users (){
+  const [users, setUsers] = useState([]);
+
+  useEffect(() =>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  },[])
+
+  return(
+    <div>
+      <h3>No of users: {users.length}</h3>
+      {
+        users.map(user => <li>{user.name}</li>)
+      }
+    </div>
+  )
+}
+
 
 function Count(){
   const [count, setCount] = useState(10);
